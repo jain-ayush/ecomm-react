@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react'
 import productService from '../services/productService'
 import ProductCard from '../components/productCard'
 import Container from '../components/container/Container'
-import { useDispatch } from 'react-redux'
-import { productList } from '../store/productSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProductList } from '../store/productSlice'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
-  const [products, setProducts] = useState([])
   const dispatch = useDispatch()
+  const {data:productLists, searchResults} = useSelector((state) => state.productList) || []
+  const listToShow = (Array.isArray(searchResults) && searchResults.length > 0) ? searchResults : productLists
   useEffect(() => {
     productService.getProducts()
-    .then((product) => {      
-      dispatch(productList(product.data))
-      setProducts(product.data.data.products)
+    .then((product) => {         
+      dispatch(getProductList(product.data))
+      // setProducts(product.data.data.products)
     })
   },[])
   
@@ -28,7 +29,7 @@ const Home = () => {
       </Link>
     </div> */}
     <div className='flex flex-wrap'>
-      {products?.map((product) => (
+      {listToShow?.map((product) => (
         <div key={product.id} className='p-2 w-1/4'>
           <ProductCard product = {product}/>
         </div>

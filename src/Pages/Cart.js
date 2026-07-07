@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import cartService from '../services/cartService'
 import { Link } from 'react-router-dom'
+import TestRef from '../components/TestRef1'
+
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([])
@@ -15,7 +17,6 @@ const Cart = () => {
     setCartItems(updatedCart)
     localStorage.setItem('cart', JSON.stringify(updatedCart))
   }
-  console.log('cartItems', cartItems);
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
@@ -24,11 +25,12 @@ const Cart = () => {
     }, 0)
 
   }
-    console.log('calclulateTotal',calculateTotal);
+    // console.log('calclulateTotal',calculateTotal);
     
   return (
     <div className="font-sans max-w-4xl max-md:max-w-xl mx-auto p-4">
       <h1 className="text-2xl font-extrabold text-gray-800">Your Cart</h1>
+      <TestRef />
       <div className="grid md:grid-cols-3 gap-4 mt-8">
         <div className="md:col-span-2 space-y-4">
           {cartItems?.map((item, index) => (
