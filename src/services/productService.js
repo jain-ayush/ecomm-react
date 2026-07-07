@@ -48,7 +48,20 @@ const productService = {
             }
         })
         return categories
+    },
+
+    searchProducts: async (query) => {
+        let token = localStorage.getItem("token")
+        const products = await axios.get(`${config.apiBaseUrl}/api/product/search-products`, {
+            params: {
+                search: query
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })        
+        return products
     }
 }
-
 export default productService

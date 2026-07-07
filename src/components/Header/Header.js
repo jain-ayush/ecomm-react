@@ -6,7 +6,7 @@ import Container from "../container/Container.js";
 import logo from "../../../src/Walmart_Spark.svg.png";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
-
+import SearchBar from '../SearchBar.js'
 
 
 
@@ -101,15 +101,15 @@ function Header() {
                 </div>
                 
               </div>
-              <div className=" relative flex items-center  bg-white lg:w-1/2 w-full rounded-3xl"><input className="w-full p-3.5 px-4 border-0 bg-transparent outline-none rounded text-navy-700" type="text" placeholder="Search everything at Walmart online and in store" />
+              {/* <div className=" relative flex items-center  bg-white lg:w-1/2 w-full rounded-3xl"><input className="w-full p-3.5 px-4 border-0 bg-transparent outline-none rounded text-navy-700" type="text" placeholder="Search everything at Walmart online and in store" />
                   <button type="submit" className=" absolute  end-3  p-2.5 text-sm font-medium text-white  rounded-3xl  focus:outline-none focus:ring-blue-900 dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900">
-                <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                </svg>
-                <span className="sr-only">Search</span>
-            </button> 
-              </div>
-            
+                      <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                      </svg>
+                      <span className="sr-only">Search</span>
+                  </button> 
+              </div> */}
+            <SearchBar />
             </div>
             {/* </div> */}
 
