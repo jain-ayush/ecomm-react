@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const {data:productLists, searchResults} = useSelector((state) => state.productList) || []
+  const {data:productLists, searchResults} = useSelector((state) => state.productList) || {}
   const listToShow = (Array.isArray(searchResults) && searchResults.length > 0) ? searchResults : productLists
   useEffect(() => {
     productService.getProducts()
