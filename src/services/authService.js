@@ -4,7 +4,7 @@ const authService = {
   login: async (data) => {
     try {
       const response = await axios.post(
-        `${config.apiBaseUrl}/api/auth/login`,
+        `${config.apiBaseUrl}/auth/login`,
         data,
         {
           headers: {
