@@ -20,8 +20,13 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          timeout: 60s
+          command_timeout: 10m
+          script_stop: true
 
           script: |
+            set -e
             echo "Starting frontend deployment..."
 
             cd /home/ubuntu/ecomm-project/ecomm-react
@@ -35,11 +40,22 @@ jobs:
             echo "Building React application..."
             npm run build
 
-            echo "Copying build files to Nginx..."
+            echo "Checking React build..."
+            test -f build/index.html
+
+            echo "Build verified successfully."
+
+            echo "Cleaning Nginx directory..."
             sudo rm -rf /var/www/ecomm-project/*
+
+            echo "Copying build files to Nginx..."
             sudo cp -r build/* /var/www/ecomm-project/
+
+            echo "Checking deployed files..."
+            test -f /var/www/ecomm-project/index.html
 
             echo "Reloading Nginx..."
             sudo systemctl reload nginx
 
-            echo "Frontend deployment completed successfully."
+            echo "Testing Nginx..."
+            curl -I http://localhost
