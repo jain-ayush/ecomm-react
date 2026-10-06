@@ -30,7 +30,7 @@ const Cart = () => {
   return (
     <div className="font-sans max-w-4xl max-md:max-w-xl mx-auto p-4">
       <h1 className="text-2xl font-extrabold text-gray-800">Your Cart</h1>
-      {/* <TestRef /> */}
+      <TestRef />
       <div className="grid md:grid-cols-3 gap-4 mt-8">
         <div className="md:col-span-2 space-y-4">
           {cartItems?.map((item, index) => (
